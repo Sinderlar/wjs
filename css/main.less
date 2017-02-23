@@ -1,0 +1,46 @@
+//注释,在css上会被删除
+//定义变量
+@mainColor: #e92322;
+//使用
+body {
+  background-color: @mainColor;
+}
+//嵌套
+.container {
+  width: 1000px;
+  background-color: red;
+  .row{
+    height: 200px;
+    div{
+      border: 1px solid @mainColor;
+      a{
+        text-decoration: none;
+        :hover{
+          color:green;
+        }
+      }
+    }
+  }
+}
+//MixIn
+/* 定义一个类 */
+ // 定义一个代码段，（）里的内容是参数，参数中:后的内容是参数的默认值（没有传参数）
+ .roundedCorners(@radius: 5px) {
+   -moz-border-radius: @radius;
+   -webkit-border-radius: @radius;
+   border-radius: @radius;
+ }
+ /* 定义的类应用到另个一个类中 */
+ #header {
+   .roundedCorners();
+ }
+ #footer {
+   .roundedCorners(10px);
+ }
+ //引用
+@import url("_p");
+//less内置函数
+body {
+  background-color: lighten(#000, 10%);
+  color: darken(#fff, 10%);
+}
